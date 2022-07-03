@@ -1,0 +1,5 @@
+Common targets are:
+     core-image
+     core-image-minimal
+     core-image-minimal-dev
+ ==> fpga-iot-image

@@ -1,0 +1,61 @@
+# Where to place downloads
+#DL_DIR ?= "${HOME}/yocto-temp/downloads"
+
+# Where to place shared-state files
+#SSTATE_DIR ?= "${HOME}/yocto-temp/sstate-cache"
+
+DISTRO = "poky"
+
+# Package Management configuration
+PACKAGE_CLASSES ?= "package_rpm"
+
+SANITY_TESTED_DISTROS_append ?= " RedHatEnterpriseWorkstation-6.*"
+
+#EXTRA_IMAGE_FEATURES = "debug-tweaks"
+#USER_CLASSES ?= "buildstats image-mklibs image-prelink"
+
+PATCHRESOLVE = "noop"
+
+# Disk Space Monitoring during the build
+BB_DISKMON_DIRS = "\
+    STOPTASKS,${TMPDIR},1G,100K \
+    STOPTASKS,${DL_DIR},1G,100K \
+    STOPTASKS,${SSTATE_DIR},1G,100K \
+    STOPTASKS,/tmp,100M,100K \
+    ABORT,${TMPDIR},100M,1K \
+    ABORT,${DL_DIR},100M,1K \
+    ABORT,${SSTATE_DIR},100M,1K \
+    ABORT,/tmp,10M,1K"
+
+PACKAGECONFIG_append_pn-qemu-native = " sdl"
+PACKAGECONFIG_append_pn-nativesdk-qemu = " sdl"
+#ASSUME_PROVIDED += "libsdl-native"
+
+CONF_VERSION = "1"
+
+# Set the root password to 'fpgai0t'
+INHERIT += "extrausers"
+# To generate the password hash run: mkpasswd -m sha-512 fpgai0t -s "11223344"
+EXTRA_USERS_PARAMS = " \
+  usermod -p '\$6\$11223344\$VIywnBJNxOjsWY7SweEjH0T3zJlSpIssk3xxMMUpg.XKLcGazn0/7iGDXP7d6wyVyLi0u/ziD/0ALWv4DblFs/' root; \
+"
+
+MACHINE ??= "de0-nano"
+
+# dbus-sensors uses CMake downloads for package manager.
+# Exports below provide the proxy variables to all recipes:
+export http_proxy
+export HTTP_PROXY
+export https_proxy
+export HTTPS_PROXY
+export no_proxy
+export NO_PROXY
+
+#
+# Use systemd for system initialization
+#
+DISTRO_FEATURES_append = " systemd"
+DISTRO_FEATURES_BACKFILL_CONSIDERED += "sysvinit"
+VIRTUAL-RUNTIME_init_manager = "systemd"
+VIRTUAL-RUNTIME_initscripts = "systemd-compat-units"
+

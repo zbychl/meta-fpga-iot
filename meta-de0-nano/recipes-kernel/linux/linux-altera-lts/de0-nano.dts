@@ -1,0 +1,18 @@
+/*
+ * TODO
+ */
+
+/dts-v1/;
+#include "socfpga_cyclone5_de0_nano_soc.dts"
+
+/ {
+	aliases {
+	};
+
+	chosen {
+	};
+
+	soc {
+	};
+};
+
