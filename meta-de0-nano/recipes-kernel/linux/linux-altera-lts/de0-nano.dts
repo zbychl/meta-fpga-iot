@@ -12,7 +12,20 @@
 	chosen {
 	};
 
+/*
+ * Add GPIO configuration for Altera PIO IP.
+ * Adjust Avalon MM address if needed.
+ */
+/*
 	soc {
+		gpio_altr0: gpio@ff210040 {
+			compatible = "altr,pio-1.0";
+			reg = <0xff210040 0x10>;
+			altr,ngpio = <4>;
+			#gpio-cells = <2>;
+			gpio-controller;
+		};
 	};
+*/
 };
 
