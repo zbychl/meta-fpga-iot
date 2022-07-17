@@ -24,6 +24,7 @@
 			altr,ngpio = <4>;
 			#gpio-cells = <2>;
 			gpio-controller;
+			gpio-line-names = "FPGA_LED0","FPGA_LED1","FPGA_LED2","FPGA_LED3";
 		};
 	};
 */
