@@ -1,0 +1,9 @@
+[Unit]
+Description=Test App/Service
+
+[Service]
+ExecStart=/usr/bin/test-app
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
