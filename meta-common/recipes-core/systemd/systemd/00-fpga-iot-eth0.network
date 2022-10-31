@@ -3,4 +3,8 @@ Name=eth0
 [Network]
 DHCP=ipv4
 LinkLocalAddressing=no
+#Address=192.168.1.2
+#Gateway=192.168.1.1
 
+[Link]
+#MACAddress=66:55:44:33:22:11
