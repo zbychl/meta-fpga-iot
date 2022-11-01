@@ -31,6 +31,8 @@ sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib buil
 Yocto building procedure is based on the one from https://rocketboards.org/foswiki/Documentation/YoctoDoraBuildWithMetaAltera
 Custom layer was added to bring image features flexibility, e.g. adding/removing RootFS contatin, DTS modification depends on platform, etc.
 
+Yocto manual: https://docs.yoctoproject.org/
+
 ### Steps
 In further documentation path to the build root directory will be called as [BUILDROOT]
 * Create directory, e.g. mkdir linux, enter the directory
