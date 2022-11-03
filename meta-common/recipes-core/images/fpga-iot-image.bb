@@ -11,9 +11,11 @@ IMAGE_INSTALL = " \
 inherit core-image
 
 
-IMAGE_INSTALL_append += " socat i2c-tools mtd-utils \
-	bash coreutils util-linux devmem2 systemd dhcp-client \
+IMAGE_INSTALL:append = " socat i2c-tools mtd-utils \
+	bash coreutils util-linux devmem2 systemd dhcpcd \
 	libgpiod libgpiod-tools test-app \
 "
+
+IMAGE_FEATURES:append = " "
 
 IMAGE_FSTYPES += " jffs2 squashfs-xz"

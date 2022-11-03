@@ -13,7 +13,7 @@ S = "${WORKDIR}/git"
 #SRC_URI += "file://test-app.service "
 #SYSTEMD_SERVICE:${PN} += "test-app.service"
 #DEPENDS = "systemd "
-#do_install_append () {
+#do_install:append () {
 #    install -d ${D}${systemd_system_unitdir}
 #    install -m 0644 ${WORKDIR}/test-app.service ${D}${systemd_system_unitdir}
 #}

@@ -13,7 +13,7 @@ BBLAYERS ?= " \
   ##OEROOT##/../meta-openembedded/meta-networking \
   ##OEROOT##/../meta-openembedded/meta-perl \
   ##OEROOT##/../meta-openembedded/meta-python \
-  ##OEROOT##/../meta-altera \
+  ##OEROOT##/../meta-intel-fpga \
   ##OEROOT##/../meta-fpga-iot \
   ##OEROOT##/../meta-fpga-iot/meta-common \
   ##OEROOT##/../meta-fpga-iot/meta-de0-nano \

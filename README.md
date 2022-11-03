@@ -36,9 +36,9 @@ Yocto manual: https://docs.yoctoproject.org/
 ### Steps
 In further documentation path to the build root directory will be called as [BUILDROOT]
 * Create directory, e.g. mkdir linux, enter the directory
-* Clone poky: git clone -b dunfell https://git.yoctoproject.org/git/poky, SHA: eb8e26214e1833d1bcc2223258e9e1ac121cb1f3
-* Clone meta-altera: git clone -b dunfell https://github.com/kraj/meta-altera.git, SHA: 237cd5ecd28491dbcff16d8d64662d3b56ac30df
-* Clone meta-openembedded: git clone -b dunfell https://github.com/openembedded/meta-openembedded.git, SHA: 7203130ed8b58c0df75cb72222ac2bcf546bce44
+* Clone poky: git clone -b kirkstone https://git.yoctoproject.org/git/poky, SHA: 2e79b199114b25d81bfaa029ccfb17676946d20d
+* Clone meta-openembedded: git clone -b kirkstone https://github.com/openembedded/meta-openembedded.git, SHA: 744a4b6eda88b9a9ca1cf0df6e18be384d9054e3
+* Clone meta-intel-fpga: git clone -b kirkstone https://git.yoctoproject.org/meta-intel-fpga, SHA: 71dd27d5776bfbba03da472272450f9d2ac076e2
 * Clone this repo: git clone -b main https://github.com/zbychl/meta-fpga-iot.git
 * Call 'export TEMPLATECONF=../meta-fpga-iot/meta-de0-nano/conf/'
 * Call 'source poky/oe-init-build-env [BUILDROOT]' - [BUILDROOT] path can be omitted, 'build' directory will be just created
