@@ -10,10 +10,26 @@ IMAGE_INSTALL = " \
 
 inherit core-image
 
-
-IMAGE_INSTALL:append = " socat i2c-tools mtd-utils \
+IMAGE_INSTALL:append = " \
+	socat i2c-tools mtd-utils \
 	bash coreutils util-linux devmem2 systemd dhcpcd \
 	libgpiod libgpiod-tools test-app \
+"
+
+# For MQTT
+IMAGE_INSTALL:append = " \
+	mosquitto \
+"
+
+# For gcc, g++, make, stdlib, etc.
+IMAGE_INSTALL:append = " \
+	packagegroup-core-buildessential \
+	cmake \
+"
+
+# For Python3 and packages
+IMAGE_INSTALL:append = " \
+	python3 python3-pip python3-cryptography  python3-numpy python3-paho-mqtt \
 "
 
 IMAGE_FEATURES:append = " "
