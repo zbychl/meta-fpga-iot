@@ -32,6 +32,11 @@ IMAGE_INSTALL:append = " \
 	python3 python3-pip python3-cryptography  python3-numpy python3-paho-mqtt \
 "
 
+# For Wireshark
+IMAGE_INSTALL:append = " \
+	wireshark tshark \
+"
+
 IMAGE_FEATURES:append = " "
 
 IMAGE_FSTYPES += " jffs2 squashfs-xz"
