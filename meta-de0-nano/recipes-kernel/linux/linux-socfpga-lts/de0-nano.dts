@@ -4,6 +4,7 @@
 
 /dts-v1/;
 #include "socfpga_cyclone5_de0_nano_soc.dts"
+#include <dt-bindings/gpio/gpio.h>
 
 / {
 	aliases {
@@ -24,6 +25,17 @@
 			#gpio-cells = <2>;
 			gpio-controller;
 			gpio-line-names = "GPIO0_0","GPIO0_1","GPIO0_2","GPIO0_3","GPIO0_4","GPIO0_5","GPIO0_6","GPIO0_7";
+			status = "disabled";
+		};
+	};
+
+/*
+ * 1-Wire temperature sensor (DS18B20)
+ */
+	soc {
+		ds18b20 {
+			compatible = "w1-gpio";
+			gpios = <&gpio_altr0 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
 			status = "disabled";
 		};
 	};
