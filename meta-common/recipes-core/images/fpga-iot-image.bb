@@ -37,6 +37,10 @@ IMAGE_INSTALL:append = " \
 	wireshark tshark \
 "
 
+IMAGE_INSTALL:append = " \
+	dtc \
+"
+
 IMAGE_FEATURES:append = " "
 
 IMAGE_FSTYPES += " jffs2 squashfs-xz"
