@@ -2,6 +2,5 @@ COMPATIBLE_MACHINE_${MACHINE} = "de0-nano"
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-
-LINUX_VERSION_EXTENSION = "-${CI_VERSION}"
-
+# Control support for 1-Wire Temperature Sensors
+SRC_URI += "file://1wire-thermal-sensor.cfg "
