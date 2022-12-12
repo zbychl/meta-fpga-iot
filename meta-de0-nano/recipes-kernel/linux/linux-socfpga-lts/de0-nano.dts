@@ -16,17 +16,16 @@
  * Add GPIO configuration for Altera PIO IP.
  * Adjust Avalon MM address if needed.
  */
-/*
 	soc {
-		gpio_altr0: gpio@ff210040 {
+		gpio_altr0: gpio@ff230000 {
 			compatible = "altr,pio-1.0";
-			reg = <0xff210040 0x10>;
-			altr,ngpio = <4>;
+			reg = <0xff230000 0x10>;
+			altr,ngpio = <8>;
 			#gpio-cells = <2>;
 			gpio-controller;
-			gpio-line-names = "FPGA_LED0","FPGA_LED1","FPGA_LED2","FPGA_LED3";
+			gpio-line-names = "GPIO0_0","GPIO0_1","GPIO0_2","GPIO0_3","GPIO0_4","GPIO0_5","GPIO0_6","GPIO0_7";
+			status = "disabled";
 		};
 	};
-*/
-};
 
+};
