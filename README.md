@@ -1,4 +1,7 @@
-# Repository for Linux stuff in context of FPGA IOT
+# Repository for Linux stuff used mostly (but not only) for FPGA IoT uses cases
+
+## Supported boards
+* DE0 Nano SoC board: https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=167&No=941
 
 
 ## Directory structure
