@@ -1,6 +1,6 @@
 SUMMARY = "Test application"
 
-SRC_URI = "git://git@github.com/zbychl/test-app.git;protocol=ssh;branch=main"
+SRC_URI = "git://github.com/zbychl/test-app.git;protocol=https;branch=main"
 SRCREV = "${AUTOREV}"
 PV = "0.1+git${SRCPV}"
 
