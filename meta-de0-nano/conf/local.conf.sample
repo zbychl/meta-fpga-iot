@@ -268,6 +268,14 @@ EXTRA_USERS_PARAMS = " \
   usermod -p '\$6\$11223344\$VIywnBJNxOjsWY7SweEjH0T3zJlSpIssk3xxMMUpg.XKLcGazn0/7iGDXP7d6wyVyLi0u/ziD/0ALWv4DblFs/' root; \
 "
 
+# Uncomment and edit when more users are required, pass=ChangeMe!
+# To generate the password hash run: mkpasswd -m sha-512 ChangeMe! -s "11223344"
+#EXTRA_USERS_PARAMS += " useradd -m user1; \
+#				useradd -m user2; \
+#				usermod  -p '\$6\$11223344\$qN2jYvVmyPj2MMm5vMEYxUTWN4ABErw1M/YD.0jYA4mK2qnRPNU5evCtIhIBO/Xzmc1sJDcoCv7X/8N16XfCm1' user1; \
+#				usermod  -p '\$6\$11223344\$qN2jYvVmyPj2MMm5vMEYxUTWN4ABErw1M/YD.0jYA4mK2qnRPNU5evCtIhIBO/Xzmc1sJDcoCv7X/8N16XfCm1' user2; \
+#				usermod  -a -G sudo user1; \
+#				usermod  -a -G sudo user2; "
 
 # dbus-sensors uses CMake downloads for package manager.
 # Exports below provide the proxy variables to all recipes:

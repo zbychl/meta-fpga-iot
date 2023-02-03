@@ -145,3 +145,9 @@ Gateway=192.168.1.1
 
 * user: root
 * pass: fpgai0t
+
+### More users
+In case more userers are required there are two options:
+
+* additionals users can be added on already deployed system: https://linuxize.com/post/how-to-create-users-in-linux-using-the-useradd-command/
+* users can be added by modification 'EXTRA_USERS_PARAMS' in local.conf.sample
