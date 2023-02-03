@@ -13,7 +13,7 @@ inherit core-image
 IMAGE_INSTALL:append = " \
 	socat i2c-tools mtd-utils \
 	bash coreutils util-linux devmem2 systemd dhcpcd \
-	libgpiod libgpiod-tools test-app \
+	libgpiod libgpiod-tools test-app data-xfers-test-app \
 "
 
 # For MQTT
