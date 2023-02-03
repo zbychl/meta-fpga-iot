@@ -2,14 +2,15 @@
 
 ## Supported boards
 * DE0 Nano SoC board: https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=167&No=941
-
+* Arria10 SoC DevKit board: https://www.intel.com/content/www/us/en/products/details/fpga/development-kits/arria/10-sx.html
 
 ## Directory structure
 
 ```
 .
 |-- conf - Yocto build configuration files directory
-|-- meta-de0-nano - De0 nano SoC Kit platform specific recipes
+|-- meta-de0-nano - De0 Nano SoC Kit platform specific recipes
+|-- meta-a10soc-devkit - Arria10 SoC DevKit platform specific recipes
 |-- meta-common - common recpies
 |-- sources - ...
 ```
@@ -43,18 +44,41 @@ In further documentation path to the build root directory will be called as [BUI
 * Clone meta-openembedded: git clone -b kirkstone https://github.com/openembedded/meta-openembedded.git, SHA: 744a4b6eda88b9a9ca1cf0df6e18be384d9054e3
 * Clone meta-intel-fpga: git clone -b kirkstone https://git.yoctoproject.org/meta-intel-fpga, SHA: 71dd27d5776bfbba03da472272450f9d2ac076e2
 * Clone this repo: git clone -b main https://github.com/zbychl/meta-fpga-iot.git
+
+Next step depends on the board is going to be used:
+
+#### De0 Nano:
 * Call 'export TEMPLATECONF=../meta-fpga-iot/meta-de0-nano/conf/'
-* Call 'source poky/oe-init-build-env [BUILDROOT]' - [BUILDROOT] path can be omitted, 'build' directory will be just created
-* Call 'bitbake fpga-iot-image', to speed up rebuild even after removing build directory shared Downloads and SState directory may be used. To do that please preapre yocto-local.conf file with the DL_DIR and SSTATE_DIR variables set to the new Download and SState directories locations. Then call bitake with -r switch available, e.g.: 'bitbake -r [some path]/yocto-local.conf fpga-iot-image', e.g.:
+
+#### Arria10 SoC DevKit:
+* Call 'export TEMPLATECONF=../meta-fpga-iot/meta-a10soc-devkit/conf/'
+
+
+Further  instructions are common:
+
+* Call 'source poky/oe-init-build-env [BUILDROOT]' - [BUILDROOT] path can be omitted, 'build' directory will be just created, e.g. 'source poky/oe-init-build-env **~/Work/builds/fpga-iot/**'
+
+* Call 'bitbake fpga-iot-image'
+To speed up rebuild even after removing build directory shared Downloads and SState directory may be used. To do that please preapre yocto-local.conf file with the DL_DIR and SSTATE_DIR variables set to the new Download and SState directories locations. Then call bitake with -r switch available, e.g.: 'bitbake -r [some path]/yocto-local.conf fpga-iot-image', e.g.:
 DL_DIR="path.../yocto-downloads"
 SSTATE_DIR="path.../fpga-iot-yocto-sstate-cache"
 
 ### Artifacts
-* kernel: [BUILDROOT]/tmp/deploy/images/de0-nano/zImage-de0-nano.bin
+
+#### De0 Nano Board:
+* kernel: [BUILDROOT]/tmp/deploy/images/de0-nano/zImage
 * dtb: [BUILDROOT]/tmp/deploy/images/de0-nano/de0-nano.dtb
 * u-boot: [BUILDROOT]/tmp/deploy/images/de0-nano/u-boot-with-spl.sfp
 * rootfs: [BUILDROOT]/tmp/deploy/images/de0-nano/fpga-iot-image-de0-nano.[ext,jffs2,...]
 * SDMMC image: [BUILDROOT]/tmp/deploy/images/de0-nano/fpga-iot-image-de0-nano.wic
+
+#### Arria10 SoC DevKit Board:
+* kernel: [BUILDROOT]/tmp/deploy/images/a10soc-devkit/zImage
+* dtb: [BUILDROOT]/tmp/deploy/images/a10soc-devkit/a10soc-devkit.dtb
+* u-boot: [BUILDROOT]/tmp/deploy/images/a10soc-devkit/u-boot-splx4.sfp
+* rootfs: [BUILDROOT]/tmp/deploy/images/a10soc-devkit/fpga-iot-image-a10soc-devkit.[ext,jffs2,...]
+* SDMMC image: [BUILDROOT]/tmp/deploy/images/a10soc-devkit/fpga-iot-image-a10soc-devkit.wic
+
 
 FPGA image shall be also added to SDMMC. It will be loaded automatically during boot. FPGA image shall be called 'de0-nano.rbf'.</br>
 To convert .SOF to .RBF: quartus_cpf -o bitstream_compression=on -c bitstream.sof bitstream.rbf
@@ -79,14 +103,14 @@ Some parts (kernel, dtb, fpga) can be also updated under Linux. The following st
 Under /mnt/boot the following images shall be available:
 
 * zImage - Kernel
-* de0-nano.dtb - Device Tree
+* de0-nano.dtb/a10soc-devkit.dtb - Device Tree
 * de0-nano.rbf - FPGA Bitstream
 
 It is enought to copy new images there and reboot the system
 
 ## Network
 ### MAC address
-De0 nano board does not have any EEPROM or ther non-volatile memory except SDMMC. Thius after each SDMMC re-flash need to provision MAC address. To do that please run the follo
+Boards does not have any EEPROM or ther non-volatile memory except SDMMC. Thius after each SDMMC re-flash need to provision MAC address. To do that please run the follo
 wing command in U-Boot console (replace example MAC address with the right one):
 
 ```
