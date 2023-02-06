@@ -79,9 +79,12 @@ SSTATE_DIR="path.../fpga-iot-yocto-sstate-cache"
 * rootfs: [BUILDROOT]/tmp/deploy/images/a10soc-devkit/fpga-iot-image-a10soc-devkit.[ext,jffs2,...]
 * SDMMC image: [BUILDROOT]/tmp/deploy/images/a10soc-devkit/fpga-iot-image-a10soc-devkit.wic
 
+## FPGA image
+FPGA image shall be also added to SDMMC. It will be loaded automatically during boot by U-Boot. U-Boot requires special format for the file: RBF - Raw Binary File, and special name for the file: 'de0-nano.rbf'. File shall be put in the FAT partition. </br>
+To convert .SOF to .RBF:
 
-FPGA image shall be also added to SDMMC. It will be loaded automatically during boot. FPGA image shall be called 'de0-nano.rbf'.</br>
-To convert .SOF to .RBF: quartus_cpf -o bitstream_compression=on -c bitstream.sof bitstream.rbf
+* Under Windows/Linux: https://www.intel.com/content/www/us/en/docs/programmable/683536/current/single-rbf-conversion-using-the-gui.html
+* Under Linux: quartus_cpf -o bitstream_compression=on -c bitstream.sof bitstream.rbf
 
 ## Updating image on SDMMC
 ### Under Linux (with SDMMC mounted)
