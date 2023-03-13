@@ -41,6 +41,11 @@ IMAGE_INSTALL:append = " \
 	dtc \
 "
 
+# For Apache
+IMAGE_INSTALL:append = " \
+	apache2 \
+"
+
 IMAGE_FEATURES:append = " "
 
 IMAGE_FSTYPES += " jffs2 squashfs-xz"
